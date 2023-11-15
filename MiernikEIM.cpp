@@ -1,5 +1,3 @@
-// EiM_consoleApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include "pch.h"
 
 #include <iostream>
@@ -80,8 +78,7 @@ void writeOrder(HANDLE hPort, const char* order)
 
 double getMeasValue(HANDLE hPort, int n_max, double t_delay, const char* order, double prec)
 {
-	// zwraca odczytan¹ wartoæ, czekaj¹c a¿ odczyt siê ustabilizuje
-
+	
 //	_startTime = time.time()
 	int	   _n = 0;
 	double _meas = 0;
@@ -116,71 +113,34 @@ double getMeasValue(HANDLE hPort, int n_max, double t_delay, const char* order, 
 	if (_n == n_max)
 	{
 		std::cout << "  --timeout achieved\n";
-		//_endTime = time.time()
-		//print( "  --time elpsed = %s" % ( _endTime - _startTime ) )
 	}
 	return _meas;
 }
 
 int main()
 {
-	//HANDLE hSerial = openSerialPort((char*)"COM2");
-
-	/*writeOrder(hSerial, "VOLT1 3.141\n");
-	std::cout << "Current SEM1: " << getMeasValue(hSerial, 40, 0.1, "MEAS:CURR? (@1)\n", 0.0001) << std::endl;
-
-	writeOrder(hSerial, "VOLT2 6.284\n");
-	std::cout << "Current SEM2: " << getMeasValue(hSerial, 40, 0.1, "MEAS:CURR? (@2)\n", 0.0001) << std::endl;
-
-	writeOrder(hSerial, "CURR 2.721\n");
-	std::cout << "Voltage SPM: " << getMeasValue(hSerial, 40, 0.1, "MEAS:VOLT? (@3)\n", 0.0001) << std::endl;
-
-	getMeasValue(hSerial, 40, 0.1, "MEAS:VOLT? (@4)\n", 0.0001);*/
-
+	HANDLE hSerial = openSerialPort((char*)"COM2");
 
 	double     parameterValues[] = { -0.1, -0.04, -0.02, -0.01,  0.005, 0.01, 0.02, 0.04, 0.1, 0.2 };
 	double     tempParameterValues[] = { -0.1, -0.08, -0.06,-0.05, -0.04,-0.03, -0.02, -0.01,  0.005, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.2 };
-
 	const int  noOfCurves = sizeof(parameterValues) / sizeof(double);
-
 	const int  tempNoOfCurves = sizeof(tempParameterValues) / sizeof(double);
-
 	double     setValues[] = { 0.03, 0.08, 0.15, 0.3, 0.4, 0.5, 0.6, 0.75, 1, 2, 3, 5, 7, 9, 11 };
 	const int  noOfPoints = sizeof(setValues) / sizeof(double);
-	double     measValues[noOfCurves][noOfPoints];
-
+	
 	double     tempMeasValues[tempNoOfCurves][noOfPoints];
-
 	double     measValues_2[noOfCurves][noOfPoints];
+
+	//Needed variables for table 1
+	double currentValuesTab1[] = { 0.015, 0.030, 0.060 };
+	double voltsValuesTab1[] = { 0.00, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6,0.9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	//double	voltsValuesTab1[] = { 0.00, 0.05, 0.1 };
+	double	measValues[sizeof(voltsValuesTab1) / sizeof(double)][sizeof(currentValuesTab1) / sizeof(double)];
+	double	measValuesVolts[sizeof(voltsValuesTab1) / sizeof(double)][sizeof(currentValuesTab1) / sizeof(double)];
 
 	std::cout << "Starting measurements" << std::endl;
 
 	char  order[30];
-	//for (int j = 0; j < noOfCurves; j++)
-	//{
-	//	sprintf_s(order, "CURR %f\n", parameterValues[j]);
-	//	writeOrder(hSerial, order);
-
-	//	std::cout << "-------------\n Ib=" << (parameterValues[j] * 1000) << " uA \n";
-	//	Sleep(3000); // [ms]
-
-	//	for (int i = 0; i < noOfPoints; i++)
-	//	{
-	//		sprintf_s(order, "VOLT2 %f\n", setValues[i]);
-	//		writeOrder(hSerial, order);
-
-	//		Sleep(1000);
-
-	//		double meas = getMeasValue(hSerial, 40, 0.1, "MEAS:CURR? (@2)\n", 0.0001);
-	//		measValues[j][i] = -meas;
-
-	//		//ser.write( b'MEAS:VOLT? (@3)\n' )
-	//		//line = ser.readline()
-	//		//meas_2 = float( line )
-	//		//measValues_2[ j, i ] = meas_2
-	//		//print( 'for Uce=' + str( setValues[ i ] ) + ' V Ic=' + str( meas ) + ' mA  Ube=' + str( meas_2 ) + ' V' )
-	//	}
-	//}
 
 	auto now = std::chrono::system_clock::now();
 	std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
@@ -204,42 +164,52 @@ int main()
 
 	std::cout << "file opened" << std::endl;
 
-	outFile << "Ic=f(Uce) [mA]" << ";" << "Ib[uA]" << ";" << "Uce[V]" << std::endl;
-
-
-
-	for (size_t i = 0; i < tempNoOfCurves; i++)
+	for (int j = 0; j < sizeof(voltsValuesTab1) / sizeof(double); j++)
 	{
-		/*sprintf_s(order, "CURR %f\n", tempParameterValues[i]);
-
+		sprintf_s(order, "VOLT2 %f\n", voltsValuesTab1[j]);
 		writeOrder(hSerial, order);
 
-		Sleep(300);
+		Sleep(2500); // [ms]
 
-		std::cout << "CURR: " << tempParameterValues[i] << std::endl;
-		double meas = getMeasValue(hSerial, 40, 0.1, "MEAS:VOLT? (@3)\n", 0.0001);
-
-		outFile << tempParameterValues[i] << ";" << meas << std::endl;*/
-
-		outFile << tempParameterValues[i] << ";" << 4+i << std::endl;
-	}
-
-	/*for (i = 0; i < noOfPoints; i++)
-	{
-		outFile << ',' << setValues[i];
-	}
-	outFile << endl;
-
-	for (j = 0; j < noOfCurves; j++)
-	{
-		outFile << parameterValues[j];
-		for (i = 0; i < noOfPoints; i++)
+		for (int i = 0; i < sizeof(currentValuesTab1) / sizeof(double); i++)
 		{
-			outFile << ',' << measValues[j][i];
+			sprintf_s(order, "CURR %f\n", currentValuesTab1[i]);
+			writeOrder(hSerial, order);
+
+			Sleep(1000);
+
+			double meas = getMeasValue(hSerial, 40, 0.1, "MEAS:CURR? (@2)\n", 0.0001);
+			measValues[j][i] = -meas;
+
+			double measVolts = getMeasValue(hSerial, 40, 0.1, "MEAS:VOLT? (@3)\n", 0.0001);
+			measValuesVolts[j][i] = measVolts;
+		}
+	}
+
+	outFile << "Uce [V] ; Ube ; Ic ; Ube ; Ic ; Ube ; Ic " << std::endl;
+	for (size_t j = 0; j < sizeof(voltsValuesTab1) / sizeof(double); j++)
+	{
+		outFile << voltsValuesTab1[j];
+
+		for (size_t i = 0; i < sizeof(currentValuesTab1) / sizeof(double); i++)
+		{
+			outFile << ';' << measValuesVolts[j][i];
 		}
 		outFile << endl;
 	}
-	*/
+
+	outFile << endl << endl << endl;
+	
+	for (size_t j = 0; j < sizeof(voltsValuesTab1) / sizeof(double); j++)
+	{
+		outFile << voltsValuesTab1[j];
+
+		for (size_t i = 0; i < sizeof(currentValuesTab1) / sizeof(double); i++)
+		{
+			outFile << ';' << measValues[j][i];
+		}
+		outFile << endl;
+	}
 
 	outFile.close();
 	std::cout << "file closed" << std::endl;
