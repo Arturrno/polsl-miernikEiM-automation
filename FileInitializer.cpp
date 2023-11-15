@@ -23,7 +23,7 @@ void FileInitializer::initializeFile() {
         timeString.resize(std::strftime(&timeString[0], timeString.size(), "%H-%M-%S %F", &timeInfo));
         std::cout << "Time of measurement: " << timeString << std::endl;
 
-        std::string tempFileName = "Measurement " + timeString + ".csv";
+        std::string tempFileName = "Measurements/Measurement " + timeString + ".csv";
         outFile.open(tempFileName);
         outFile.imbue(std::locale("fr_FR.utf8"));
 
