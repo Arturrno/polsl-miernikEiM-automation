@@ -19,8 +19,6 @@ public:
     template <typename T>
     FileInitializer& operator<<(const T& data);
 
-    // Obs³uga specjalna dla endl
-    FileInitializer& operator<<(std::ostream& (*manipulator)(std::ostream&));
 };
 
 template <typename T>
@@ -34,12 +32,3 @@ FileInitializer& FileInitializer::operator<<(const T& data) {
     return *this;
 }
 
-FileInitializer& FileInitializer::operator<<(std::ostream& (*manipulator)(std::ostream&)) {
-    if (outFile.is_open()) {
-        manipulator(outFile);
-    }
-    else {
-        std::cout << "File is not open!" << std::endl;
-    }
-    return *this;
-}
