@@ -92,3 +92,4 @@ double SerialPort::getMeasValue(int n_max, double t_delay, const char* order, do
     }
     return _meas;
 }
+

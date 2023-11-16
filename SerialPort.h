@@ -25,4 +25,8 @@ public:
     bool openSerialPort();
     void writeOrder(const char* order);
     double getMeasValue(int n_max, double t_delay, const char* order, double prec);
+
+    double getVoltMeas(); 
+    double getCurrent1();
+    double getCurrent2();
 };
