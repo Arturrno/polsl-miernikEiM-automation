@@ -14,6 +14,7 @@ int main()
 
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
+		outFile << "HEllo";
 		serial.setCurr(1.2);
 		double measurement = serial.getVolt(); 
 	}
