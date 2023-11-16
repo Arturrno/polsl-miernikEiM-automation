@@ -14,8 +14,8 @@ This project aims to facilitate the measurement and analysis of electrical value
 
 ## Prerequisites
 
-- Computer with Windows/Linux/MacOS.
-- Installed C++ compilation software, e.g., Visual Studio (Windows), g++ (Linux), Xcode (MacOS).
+- Computer with Windows.
+- Installed C++ compilation software, e.g., Visual Studio (Windows).
 - Access to a serial port.
 
 ## Running the Application
