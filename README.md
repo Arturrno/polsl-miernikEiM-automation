@@ -30,7 +30,7 @@ If you'd like to contribute to the project, fork this repository, make changes, 
 
 ## Author
 
-This project was created by (insert your name/nickname).
+This project was created by students from Silesian University of Technology.
 
 ## License
 
