@@ -127,11 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileInitializer.cpp" />
     <ClCompile Include="MiernikEIM.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="SerialPort.cpp" />
+    <ClCompile Include="Variables.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileInitializer.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SerialPort.h" />
+    <ClInclude Include="Variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
