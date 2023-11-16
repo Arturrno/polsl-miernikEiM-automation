@@ -1,8 +1,6 @@
 #include "SerialPort.h"
 #include "FileInitializer.h"
 #include "Variables.h"
-#include "pbPlots.hpp"
-#include "supportLib.hpp"
 
 #define DEBUG_MODE 1
 
@@ -14,29 +12,7 @@ int main()
 
 #if DEBUG_MODE == 1
 
-	bool success;
-	StringReference* errorMessage = CreateStringReferenceLengthValue(0, L' ');
-	RGBABitmapImageReference* imageReference = CreateRGBABitmapImageReference();
-
-	std::vector<double> xs{ -100, -1, 0, 1, 2 };
-	std::vector<double> ys{ 2, -1, -2, -1, 2 };
-
-	success = DrawScatterPlot(imageReference, 600, 400, &xs, &ys, errorMessage);
-
-	if (success) {
-		std::vector<double>* pngdata = ConvertToPNG(imageReference->image);
-		WriteToFile(pngdata, "example1.png");
-		DeleteImage(imageReference->image);
-	}
-	else {
-		std::cerr << "Error: ";
-		for (wchar_t c : *errorMessage->string) {
-			std::wcerr << c;
-		}
-		std::cerr << std::endl;
-	}
-
-	FreeAllocations();
+	
 
 
 #else 
