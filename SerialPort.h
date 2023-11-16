@@ -17,14 +17,14 @@ class SerialPort {
 private:
     HANDLE _hSerial;
     char* portName;
+    void writeOrder(const char* order);
+    double getMeasValue(int n_max, double t_delay, const char* order, double prec);
 
 public:
     SerialPort(char* port);
     ~SerialPort();
 
     bool openSerialPort();
-    void writeOrder(const char* order);
-    double getMeasValue(int n_max, double t_delay, const char* order, double prec);
 
     //Get values 
     double getVolt(); 
@@ -32,8 +32,8 @@ public:
     double getCurr2();
 
     //Set values
-    void setVolt1(); 
-    void setVolt2(); 
-    void setCurr();
+    void setVolt1(const double value);
+    void setVolt2(const double value);
+    void setCurr(const double value);
 
 };
