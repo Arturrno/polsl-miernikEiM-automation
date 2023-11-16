@@ -1,37 +1,37 @@
 # MiernikEIM
 
-Projekt MiernikEIM jest aplikacją stworzoną w języku C++, umożliwiającą pomiar wartości elektrycznych za pomocą interfejsu szeregowego.
+The MiernikEIM project is a C++ application that enables the measurement of electrical values using a serial interface.
 
-## Wstęp
+## Introduction
 
-Ten projekt ma na celu umożliwienie pomiaru i analizy wartości elektrycznych za pomocą komunikacji szeregowej z odpowiednim urządzeniem. Jest to przykładowa aplikacja, która może być wykorzystana do komunikacji z urządzeniem do pomiarów elektrycznych, takim jak miernik lub czujnik, poprzez port szeregowy.
+This project aims to facilitate the measurement and analysis of electrical values through serial communication with a specific device. It's an example application that can be used to communicate with an electrical measuring device or sensor via a serial port.
 
-## Funkcjonalności
+## Features
 
-- **Pomiar wartości elektrycznych**: Aplikacja umożliwia pomiar różnych wartości elektrycznych, takich jak napięcie, prąd, opór itp.
-- **Komunikacja szeregowa**: Wykorzystuje port szeregowy do komunikacji z urządzeniem do pomiarów.
-- **Analiza pomiarów**: Pozwala na analizę i prezentację danych pomiarowych.
+- **Measurement of Electrical Values**: The application allows measurement of various electrical values such as voltage, current, resistance, etc.
+- **Serial Communication**: It utilizes the serial port to communicate with the measuring device.
+- **Analysis of Measurements**: Enables analysis and presentation of measurement data.
 
-## Wymagania wstępne
+## Prerequisites
 
-- Komputer z systemem operacyjnym Windows/Linux/MacOS.
-- Zainstalowane oprogramowanie do kompilacji języka C++, np. Visual Studio (Windows), g++ (Linux), Xcode (MacOS).
-- Dostęp do portu szeregowego.
+- Computer with Windows/Linux/MacOS.
+- Installed C++ compilation software, e.g., Visual Studio (Windows), g++ (Linux), Xcode (MacOS).
+- Access to a serial port.
 
-## Uruchomienie
+## Running the Application
 
-1. Sklonuj to repozytorium na swój lokalny komputer.
-2. Skompiluj aplikację za pomocą odpowiedniego narzędzia do kompilacji C++.
-3. Uruchom aplikację i postępuj zgodnie z instrukcjami wyświetlanymi w konsoli.
+1. Clone this repository to your local machine.
+2. Compile the application using the appropriate C++ compilation tool.
+3. Run the application and follow the instructions displayed in the console.
 
-## Kontrybucje
+## Contributions
 
-Jeśli chcesz się zaangażować w rozwój projektu, zrób fork tego repozytorium, wprowadź zmiany i zgłoś pull request. Chętnie przyjmiemy wszelkie propozycje usprawnień!
+If you'd like to contribute to the project, fork this repository, make changes, and submit a pull request. We welcome any suggestions for improvement!
 
-## Autor
+## Author
 
-Ten projekt został stworzony przez (dodaj swoje imię/nick)
+This project was created by (insert your name/nickname).
 
-## Licencja
+## License
 
-Ten projekt jest dostępny na licencji MIT. Szczegółowe informacje znajdziesz w pliku LICENSE.
+This project is available under the MIT License. For more information, see the LICENSE file.
