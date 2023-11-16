@@ -4,11 +4,6 @@
 
 #define DEBUG_MODE 1
 
-
-const char *current1Order = "MEAS:CURR ? (@1)\n";
-const char *current2Order = "MEAS:CURR ? (@2)\n";
-const char *voltOrder =		"MEAS:VOLT ? (@3)\n";
-
 int main()
 {
 	char portName[] = "COM2";

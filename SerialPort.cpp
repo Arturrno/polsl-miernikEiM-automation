@@ -93,3 +93,31 @@ double SerialPort::getMeasValue(int n_max, double t_delay, const char* order, do
     return _meas;
 }
 
+double SerialPort::getVolt()
+{
+    return this->getMeasValue(40, 0.1, "MEAS:VOLT? (@3)\n", 0.0001);
+}
+
+double SerialPort::getCurr1()
+{
+    return this->getMeasValue(40, 0.1, "MEAS:CURR? (@1)\n", 0.0001);
+}
+
+double SerialPort::getCurr2()
+{
+    return this->getMeasValue(40, 0.1, "MEAS:CURR? (@2)\n", 0.0001);
+}
+
+void SerialPort::setVolt1()
+{
+
+}
+
+void SerialPort::setVolt2()
+{
+}
+
+void SerialPort::setCurr()
+{
+}
+

@@ -26,7 +26,14 @@ public:
     void writeOrder(const char* order);
     double getMeasValue(int n_max, double t_delay, const char* order, double prec);
 
-    double getVoltMeas(); 
-    double getCurrent1();
-    double getCurrent2();
+    //Get values 
+    double getVolt(); 
+    double getCurr1();
+    double getCurr2();
+
+    //Set values
+    void setVolt1(); 
+    void setVolt2(); 
+    void setCurr();
+
 };
