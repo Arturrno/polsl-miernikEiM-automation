@@ -1,4 +1,4 @@
-# MiernikEIM
+# MiernikEIM ⚡🔌
 
 The MiernikEIM project is a C++ application that enables the measurement of electrical values using a serial interface.
 
