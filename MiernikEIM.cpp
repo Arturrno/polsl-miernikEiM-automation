@@ -19,12 +19,12 @@ int main()
 
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
-		outFile << "hello;"; // Fix this problem LNK2005, LNK1169
+		outFile << "hello;";
 	}
-	outFile << endl;
+	outFile << std::endl;
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
-		outFile << "hello;"; // Fix this problem LNK2005, LNK1169
+		outFile << "hello;";
 	}
 
 #else 

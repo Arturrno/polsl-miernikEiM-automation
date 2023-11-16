@@ -20,10 +20,10 @@ void FileInitializer::initializeFile() {
     std::string timeString(100, 0);
 
     if (localtime_s(&timeInfo, &currentTime) == 0) {
-        timeString.resize(std::strftime(&timeString[0], timeString.size(), "(%H-%M-%S) %F", &timeInfo));
+        timeString.resize(std::strftime(&timeString[0], timeString.size(), "%F_%H-%M-%S", &timeInfo));
         std::cout << "Time of measurement: " << timeString << std::endl;
 
-        std::string tempFileName = "Measurements/Measurement_" + timeString + ".csv";
+        std::string tempFileName = "Measurements_" + timeString + ".csv";
         outFile.open(tempFileName);
         outFile.imbue(std::locale("fr_FR.utf8"));
 
