@@ -12,17 +12,7 @@ int main()
 
 #if DEBUG_MODE == 1
 
-	for (size_t i = 0; i < currentValuesTab1Size; i++)
-	{
-		outFile << "Hello World";
-		serial.setCurr(1.2);
-		double measurement = serial.getVolt(); 
-	}
-	outFile << std::endl;
-	for (size_t i = 0; i < currentValuesTab1Size; i++)
-	{
-		outFile << "hello;";
-	}
+
 
 #else 
 	if (serial.openSerialPort()) 

@@ -129,14 +129,18 @@
   <ItemGroup>
     <ClCompile Include="FileInitializer.cpp" />
     <ClCompile Include="MiernikEIM.cpp" />
+    <ClCompile Include="pbPlots.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="SerialPort.cpp" />
+    <ClCompile Include="supportLib.cpp" />
     <ClCompile Include="Variables.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileInitializer.h" />
+    <ClInclude Include="pbPlots.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SerialPort.h" />
+    <ClInclude Include="supportLib.hpp" />
     <ClInclude Include="Variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
