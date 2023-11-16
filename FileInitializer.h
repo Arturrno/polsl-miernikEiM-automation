@@ -16,30 +16,26 @@ public:
     void initializeFile();
     void closeFile();
 
-    template <typename T>
-    FileInitializer& operator<<(const T& data);
+    template<typename T>
+    FileInitializer& operator<<(const T& data) {
+        if (outFile.is_open()) {
+            outFile << data;
+        }
+        else {
+            std::cout << "Unable to write to file" << std::endl;
+        }
+        return *this;
+    }
 
     // Obs³uga specjalna dla endl
-    FileInitializer& operator<<(std::ostream& (*manipulator)(std::ostream&));
+    FileInitializer& operator<<(std::ostream& (*manip)(std::ostream&)) {
+        if (outFile.is_open()) {
+            manip(outFile);
+        }
+        else {
+            std::cout << "Unable to write to file!" << std::endl;
+        }
+        return *this;
+    }
 };
 
-template <typename T>
-FileInitializer& FileInitializer::operator<<(const T& data) {
-    if (outFile.is_open()) {
-        outFile << data;
-    }
-    else {
-        std::cout << "File is not open!" << std::endl;
-    }
-    return *this;
-}
-
-FileInitializer& FileInitializer::operator<<(std::ostream& (*manipulator)(std::ostream&)) {
-    if (outFile.is_open()) {
-        manipulator(outFile);
-    }
-    else {
-        std::cout << "File is not open!" << std::endl;
-    }
-    return *this;
-}

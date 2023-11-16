@@ -16,7 +16,12 @@ int main()
 
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
-		outFile << "hello"; // Fix this problem LNK2005, LNK1169
+		outFile << "hello;"; // Fix this problem LNK2005, LNK1169
+	}
+	outFile << endl;
+	for (size_t i = 0; i < currentValuesTab1Size; i++)
+	{
+		outFile << "hello;"; // Fix this problem LNK2005, LNK1169
 	}
 
 #else 
