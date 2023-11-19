@@ -65,6 +65,7 @@ double SerialPort::getMeasValue(int n_max, double t_delay, const char* order, do
     {
         Sleep((DWORD)(1000 * t_delay));
 
+
         writeOrder(order);
         _pMeas = _meas;
 
