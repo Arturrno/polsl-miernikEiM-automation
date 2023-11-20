@@ -20,7 +20,7 @@ int main()
 	outFile << std::endl;
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
-		outFile << "hello;";
+		outFile << "hello WORLD";
 	}
 
 #else 
