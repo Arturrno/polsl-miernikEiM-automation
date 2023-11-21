@@ -19,21 +19,19 @@ private:
     char* portName;
     void writeOrder(const char* order);
     double getMeasValue(int n_max, double t_delay, const char* order, double prec);
+    bool openSerialPort();
 
 public:
     SerialPort(char* port);
     ~SerialPort();
 
-    bool openSerialPort();
-
     //Get values 
-    double getVolt(); 
     double getCurr1();
+    double getVolt();
     double getCurr2();
 
     //Set values
     void setVolt1(const double value);
-    void setVolt2(const double value);
     void setCurr(const double value);
-
+    void setVolt2(const double value);
 };

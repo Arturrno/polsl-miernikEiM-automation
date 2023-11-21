@@ -1,6 +1,12 @@
 #include "SerialPort.h"
 
-SerialPort::SerialPort(char* port) : _hSerial(INVALID_HANDLE_VALUE), portName(port) {}
+SerialPort::SerialPort(char* port) : _hSerial(INVALID_HANDLE_VALUE), portName(port) {
+    if (!openSerialPort())
+    {
+        std::cout << "Failed to open serial port.\n";
+        //exit(0);
+    }
+}
 
 SerialPort::~SerialPort() {
     if (_hSerial != INVALID_HANDLE_VALUE) {

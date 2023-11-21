@@ -3,28 +3,46 @@
 #include "Variables.h"
 
 #define DEBUG_MODE 1
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
+
 
 int main()
 {
 	char portName[] = "COM2";
-	SerialPort serial(portName);
+	SerialPort tester(portName);
 	FileInitializer outFile;
+
+	double measValues_1[ARRAY_SIZE(volt1)][ARRAY_SIZE(volt1)]; //Measurements for the first table
+	double UGSoff = 0; 
 
 #if DEBUG_MODE == 1
 	
-	//take it or leave it
-	for (size_t i = 0; i < currentValuesTab1Size; i++)
+	for (size_t i = 0; i < ARRAY_SIZE(volt1); i++)
 	{
-		serial.setCurr(1.2);
-		double measurement = serial.getVolt(); 
-	}
-	outFile << std::endl;
-	for (size_t i = 0; i < currentValuesTab1Size; i++)
-	{
-		outFile << "hello WORLD";
+		tester.setVolt1(volt1[i]);
+
+		for (size_t j = 0; j < ARRAY_SIZE(volt2); j++)
+		{
+			tester.setVolt2(volt2[j]);
+			measValues_1[i][j] = tester.getCurr1();
+		}
 	}
 
-#else 
+	//Writing the results to an external file
+	outFile << "Id;Id;Id" << std::endl;
+	for (size_t i = 0; i < ARRAY_SIZE(volt1); i++)
+	{
+		outFile << volt1[i] << ";";
+		for (size_t j = 0; j < ARRAY_SIZE(volt2); j++)
+		{
+			outFile << measValues_1[i][j] << ";";
+		}
+
+		outFile << std::endl;
+	}
+	
+#else
+
 	if (serial.openSerialPort()) 
 	{
 		const char* order = "your_order";
