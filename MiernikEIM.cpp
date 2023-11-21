@@ -14,12 +14,13 @@ int main()
 
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
-		outFile << "hello;";
+		serial.setCurr(1.2);
+		double measurement = serial.getVolt(); 
 	}
 	outFile << std::endl;
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
-		outFile << "hello;";
+		outFile << "hello WORLD";
 	}
 
 #else 
@@ -28,6 +29,8 @@ int main()
 		const char* order = "your_order";
 
 		double measurement = serial.getMeasValue(10, 1.0, order, 0.001); // Example of a function call
+
+		
 
 		std::cout << "Starting measurements..." << std::endl;
 

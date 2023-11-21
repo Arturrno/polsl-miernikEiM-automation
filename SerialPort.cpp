@@ -109,16 +109,24 @@ double SerialPort::getCurr2()
     return this->getMeasValue(40, 0.1, "MEAS:CURR? (@2)\n", 0.0001);
 }
 
-void SerialPort::setVolt1()
+void SerialPort::setVolt1(const double value)
 {
-
+    char  order[30];
+    sprintf_s(order, "VOLT1 %f\n", value);
+    this->writeOrder(order);
 }
 
-void SerialPort::setVolt2()
+void SerialPort::setVolt2(const double value)
 {
+    char  order[30];
+    sprintf_s(order, "VOLT2 %f\n", value);
+    this->writeOrder(order);
 }
 
-void SerialPort::setCurr()
+void SerialPort::setCurr(const double value)
 {
+    char  order[30];
+    sprintf_s(order, "CURR %f\n", value);
+    this->writeOrder(order);
 }
 
