@@ -4,7 +4,7 @@ SerialPort::SerialPort(char* port) : _hSerial(INVALID_HANDLE_VALUE), portName(po
     if (!openSerialPort())
     {
         std::cout << "Failed to open serial port.\n";
-        //exit(0);
+        exit(0);
     }
 }
 
