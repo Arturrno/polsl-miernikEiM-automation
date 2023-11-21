@@ -11,7 +11,8 @@ int main()
 	FileInitializer outFile;
 
 #if DEBUG_MODE == 1
-
+	
+	//take it or leave it
 	for (size_t i = 0; i < currentValuesTab1Size; i++)
 	{
 		serial.setCurr(1.2);
