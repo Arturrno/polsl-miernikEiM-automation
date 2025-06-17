@@ -1,10 +1,6 @@
 # MiernikEIM ⚡🔌
 
-The MiernikEIM project is a C++ application that enables the measurement of electrical values using a serial interface.
-
-## Introduction
-
-This project aims to facilitate the measurement and analysis of electrical values through serial communication with a specific device. It's an example application that can be used to communicate with an electrical measuring device or sensor via a serial port.
+The MiernikEIM project is a C++ application that enables auto measurement of electrical values using a serial interface, this program was designed to be used with specific device in EiM course at Silesian University of Technology (POLSL).
 
 ## Features
 
